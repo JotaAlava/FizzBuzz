@@ -9,9 +9,6 @@
 
 namespace FlexOffersFizzBuzz.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
     public partial class Type
     {
         public int TypeId { get; set; }

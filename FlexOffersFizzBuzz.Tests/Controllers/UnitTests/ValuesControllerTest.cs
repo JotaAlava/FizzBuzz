@@ -3,7 +3,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FlexOffersFizzBuzz.Controllers;
 
-namespace FlexOffersFizzBuzz.Tests.Controllers
+namespace FlexOffersFizzBuzz.Tests
 {
     [TestClass]
     public class ValuesControllerTest

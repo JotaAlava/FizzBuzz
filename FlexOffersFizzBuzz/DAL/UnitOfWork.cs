@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using FlexOffersFizzBuzz.Models;
 
 namespace FlexOffersFizzBuzz.DAL.Repositories
 {
-    public class UnitOfWork : IDisposable
+    public class UnitOfWork : IDisposable, IUnitOfWork
     {
         private FlexOffersFizzBuzzModelContainer context;
-        private GenericRepository<Operation> teamRepository;
+        private GenericRepository<Operation> operationRepository;
 
         /// <summary>
         /// This is the only class that should "new" the FlexOffersFizzBuzzModelContainer.
@@ -42,11 +39,11 @@ namespace FlexOffersFizzBuzz.DAL.Repositories
         {
             get
             {
-                if (this.teamRepository == null)
+                if (this.operationRepository == null)
                 {
-                    this.teamRepository = new GenericRepository<Operation>(context);
+                    this.operationRepository = new GenericRepository<Operation>(context);
                 }
-                return teamRepository;
+                return operationRepository;
             }
         }
 
@@ -74,5 +71,10 @@ namespace FlexOffersFizzBuzz.DAL.Repositories
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+    }
+
+    public interface IUnitOfWork
+    {
+        
     }
 }
