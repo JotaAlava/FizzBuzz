@@ -1,31 +1,53 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using FlexOffersLogger;
 
 namespace FizzBuzzCore
 {
     public class FizzBuzzOperationResults
     {
         /// <summary>
-        /// Our good'ol contructor!
+        /// Default Ctor
         /// </summary>
-        public FizzBuzzOperationResults(Exception exception, Dictionary<int, int> resultDictionary)
+        public FizzBuzzOperationResults()
         {
-            this.Exception = exception;
-            this.ResultDictionary = resultDictionary;
+            
         }
 
         /// <summary>
-        /// This property will help us buble up the errors to a logger or perhaps the GUI.
+        /// Our good'ol contructor!
         /// </summary>
-        public Exception Exception { get; set; }
+        public FizzBuzzOperationResults(FizzBuzzOperationResultCodes operationResult)
+        {
+            this.RunStatus = operationResult;
+        }
+
+        /// <summary>
+        /// Will tell whoever is consuming this code what the result of the operation was
+        /// </summary>
+        public FizzBuzzOperationResultCodes RunStatus { get; set; }
 
         /// <summary>
         /// This property stores a index of operation - result pair.
         /// Key: Number of times the operatoin ocurred.
         /// Value: Result of operation.
         /// </summary>
-        public Dictionary <int, int> ResultDictionary { get; set; }
+        public Dictionary<int, int> ResultDictionary { get; set; }
+
+        /// <summary>
+        /// The logger will write to a text file in the system everytime an operation is performed.
+        /// </summary>
+        public FizzBuzzLogger logger = new FizzBuzzLogger();
+    }
+
+    public enum FizzBuzzOperationResultCodes
+    {
+        // If the object is divisible by the low number then output the word "Fizz"
+        Fizz,
+        // If the object is divisible by the high number then output the word "Buzz"
+        Buzz,
+        // If the object is divisible by both numbers then output the word "FizzBuzzz"
+        FizzBuzz,
+        // If the object isn't a part of the family of objects that we support
+        InvalidType
     }
 }

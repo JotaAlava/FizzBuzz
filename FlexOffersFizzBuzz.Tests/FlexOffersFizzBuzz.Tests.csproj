@@ -91,7 +91,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FizzBuzzCore.Test\FizzBuzz.cs" />
+    <Compile Include="FizzBuzzCore.Test\FizzBuzzMainTests.cs" />
+    <Compile Include="FizzBuzzCore.Test\IsDivisibleTests.cs" />
     <Compile Include="FizzBuzzCore.Test\FizzBuzzOperator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\ValuesControllerTest.cs" />

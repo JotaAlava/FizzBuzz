@@ -3,3 +3,10 @@ C:\Users\Jose\Documents\GitHub\FlexOffersFizzBuzz\FizzBuzzCore\bin\Debug\FizzBuz
 C:\Users\Jose\Documents\GitHub\FlexOffersFizzBuzz\FizzBuzzCore\bin\Debug\FizzBuzzCore.pdb
 C:\Users\Jose\Documents\GitHub\FlexOffersFizzBuzz\FizzBuzzCore\obj\Debug\FizzBuzzCore.dll
 C:\Users\Jose\Documents\GitHub\FlexOffersFizzBuzz\FizzBuzzCore\obj\Debug\FizzBuzzCore.pdb
+C:\Users\joseal\Documents\GitHub\FlexOffersFizzBuzz\FizzBuzzCore\obj\Debug\FizzBuzzCore.csprojResolveAssemblyReference.cache
+C:\Users\joseal\Documents\GitHub\FlexOffersFizzBuzz\FizzBuzzCore\obj\Debug\FizzBuzzCore.dll
+C:\Users\joseal\Documents\GitHub\FlexOffersFizzBuzz\FizzBuzzCore\bin\Debug\FizzBuzzCore.dll
+C:\Users\joseal\Documents\GitHub\FlexOffersFizzBuzz\FizzBuzzCore\bin\Debug\FizzBuzzCore.pdb
+C:\Users\joseal\Documents\GitHub\FlexOffersFizzBuzz\FizzBuzzCore\obj\Debug\FizzBuzzCore.pdb
+C:\Users\joseal\Documents\GitHub\FlexOffersFizzBuzz\FizzBuzzCore\bin\Debug\FlexOffersFizzBuzzLogger.cs.dll
+C:\Users\joseal\Documents\GitHub\FlexOffersFizzBuzz\FizzBuzzCore\bin\Debug\FlexOffersFizzBuzzLogger.cs.pdb

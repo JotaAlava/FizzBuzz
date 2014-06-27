@@ -45,6 +45,12 @@
     <Compile Include="FlexOffersFizzBuzzFoodBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FlexOffersFizzBuzzLogger.cs\FlexOffersLogger.csproj">
+      <Project>{c6425187-fda9-4c43-a1b6-5517c489884f}</Project>
+      <Name>FlexOffersLogger</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
