@@ -1,0 +1,5 @@
+C:\Users\Jose\Documents\GitHub\FlexOffersFizzBuzz\FizzBuzzCore\obj\Debug\FizzBuzzCore.csprojResolveAssemblyReference.cache
+C:\Users\Jose\Documents\GitHub\FlexOffersFizzBuzz\FizzBuzzCore\bin\Debug\FizzBuzzCore.dll
+C:\Users\Jose\Documents\GitHub\FlexOffersFizzBuzz\FizzBuzzCore\bin\Debug\FizzBuzzCore.pdb
+C:\Users\Jose\Documents\GitHub\FlexOffersFizzBuzz\FizzBuzzCore\obj\Debug\FizzBuzzCore.dll
+C:\Users\Jose\Documents\GitHub\FlexOffersFizzBuzz\FizzBuzzCore\obj\Debug\FizzBuzzCore.pdb
