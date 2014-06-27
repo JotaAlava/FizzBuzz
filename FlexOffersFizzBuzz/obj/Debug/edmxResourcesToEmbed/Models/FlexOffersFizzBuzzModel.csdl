@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="FlexOffersFizzBuzzModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="FlexOffersFizzBuzzModelContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Operations" EntityType="FlexOffersFizzBuzzModel.Operation" />
+    <EntitySet Name="Types" EntityType="FlexOffersFizzBuzzModel.Type" />
+    <AssociationSet Name="OperationType" Association="FlexOffersFizzBuzzModel.OperationType">
+      <End Role="Operation" EntitySet="Operations" />
+      <End Role="Type" EntitySet="Types" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Operation">
+    <Key>
+      <PropertyRef Name="OperationId" />
+    </Key>
+    <Property Name="OperationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LowNumber" Type="Int32" Nullable="false" />
+    <Property Name="HighNumber" Type="Int32" Nullable="false" />
+    <Property Name="Output" Type="String" Nullable="false" />
+    <Property Name="Result" Type="String" Nullable="false" />
+    <NavigationProperty Name="Types" Relationship="FlexOffersFizzBuzzModel.OperationType" FromRole="Operation" ToRole="Type" />
+    <Property Name="DateExecuted" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Type">
+    <Key>
+      <PropertyRef Name="TypeId" />
+    </Key>
+    <Property Name="TypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <NavigationProperty Name="Operation" Relationship="FlexOffersFizzBuzzModel.OperationType" FromRole="Type" ToRole="Operation" />
+    <Property Name="OperationId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="OperationType">
+    <End Type="FlexOffersFizzBuzzModel.Operation" Role="Operation" Multiplicity="1" />
+    <End Type="FlexOffersFizzBuzzModel.Type" Role="Type" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operation">
+        <PropertyRef Name="OperationId" />
+      </Principal>
+      <Dependent Role="Type">
+        <PropertyRef Name="OperationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

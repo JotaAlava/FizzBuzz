@@ -140,5 +140,20 @@ namespace FlexOffersFizzBuzz.Tests
             // Assert
             Assert.AreEqual(expectedResult, actualResult);
         }
+
+        [TestMethod]
+        public void IsDivisible_0_DivisbleBy_0()
+        {
+            // Arrange
+            var sut = new Cake("Chocolate", 0);
+            var testDivisor = 0;
+            var expectedResult = false;
+
+            // Act
+            var actualResult = sut.AmDivisibleBy(testDivisor);
+
+            // Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
     }
 }

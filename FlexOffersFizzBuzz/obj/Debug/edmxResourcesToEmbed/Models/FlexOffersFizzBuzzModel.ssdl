@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FlexOffersFizzBuzzModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="FlexOffersFizzBuzzModelStoreContainer">
+    <EntitySet Name="Operations" EntityType="FlexOffersFizzBuzzModel.Store.Operations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Types" EntityType="FlexOffersFizzBuzzModel.Store.Types" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="OperationType" Association="FlexOffersFizzBuzzModel.Store.OperationType">
+      <End Role="Operation" EntitySet="Operations" />
+      <End Role="Type" EntitySet="Types" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Operations">
+    <Key>
+      <PropertyRef Name="OperationId" />
+    </Key>
+    <Property Name="OperationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LowNumber" Type="int" Nullable="false" />
+    <Property Name="HighNumber" Type="int" Nullable="false" />
+    <Property Name="Output" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Result" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateExecuted" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Types">
+    <Key>
+      <PropertyRef Name="TypeId" />
+    </Key>
+    <Property Name="TypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OperationId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="OperationType">
+    <End Role="Operation" Type="FlexOffersFizzBuzzModel.Store.Operations" Multiplicity="1" />
+    <End Role="Type" Type="FlexOffersFizzBuzzModel.Store.Types" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operation">
+        <PropertyRef Name="OperationId" />
+      </Principal>
+      <Dependent Role="Type">
+        <PropertyRef Name="OperationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

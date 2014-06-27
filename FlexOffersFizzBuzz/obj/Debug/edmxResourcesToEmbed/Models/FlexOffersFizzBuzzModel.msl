@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FlexOffersFizzBuzzModelStoreContainer" CdmEntityContainer="FlexOffersFizzBuzzModelContainer">
+    <EntitySetMapping Name="Operations">
+      <EntityTypeMapping TypeName="IsTypeOf(FlexOffersFizzBuzzModel.Operation)">
+        <MappingFragment StoreEntitySet="Operations">
+          <ScalarProperty Name="OperationId" ColumnName="OperationId" />
+          <ScalarProperty Name="LowNumber" ColumnName="LowNumber" />
+          <ScalarProperty Name="HighNumber" ColumnName="HighNumber" />
+          <ScalarProperty Name="Output" ColumnName="Output" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="DateExecuted" ColumnName="DateExecuted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Types">
+      <EntityTypeMapping TypeName="IsTypeOf(FlexOffersFizzBuzzModel.Type)">
+        <MappingFragment StoreEntitySet="Types">
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="OperationId" ColumnName="OperationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

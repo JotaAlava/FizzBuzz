@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FlexOffersFizzBuzzModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="FlexOffersFizzBuzzModelStoreContainer">
+    <EntitySet Name="Operations" EntityType="FlexOffersFizzBuzzModel.Store.Operations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Types" EntityType="FlexOffersFizzBuzzModel.Store.Types" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="OperationType" Association="FlexOffersFizzBuzzModel.Store.OperationType">
+      <End Role="Operation" EntitySet="Operations" />
+      <End Role="Type" EntitySet="Types" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Operations">
+    <Key>
+      <PropertyRef Name="OperationId" />
+    </Key>
+    <Property Name="OperationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LowNumber" Type="int" Nullable="false" />
+    <Property Name="HighNumber" Type="int" Nullable="false" />
+    <Property Name="Output" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Result" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateExecuted" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Types">
+    <Key>
+      <PropertyRef Name="TypeId" />
+    </Key>
+    <Property Name="TypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OperationId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="OperationType">
+    <End Role="Operation" Type="FlexOffersFizzBuzzModel.Store.Operations" Multiplicity="1" />
+    <End Role="Type" Type="FlexOffersFizzBuzzModel.Store.Types" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operation">
+        <PropertyRef Name="OperationId" />
+      </Principal>
+      <Dependent Role="Type">
+        <PropertyRef Name="OperationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="FlexOffersFizzBuzzModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="FlexOffersFizzBuzzModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Operations" EntityType="FlexOffersFizzBuzzModel.Operation" />
+          <EntitySet Name="Types" EntityType="FlexOffersFizzBuzzModel.Type" />
+          <AssociationSet Name="OperationType" Association="FlexOffersFizzBuzzModel.OperationType">
+            <End Role="Operation" EntitySet="Operations" />
+            <End Role="Type" EntitySet="Types" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Operation">
+          <Key>
+            <PropertyRef Name="OperationId" />
+          </Key>
+          <Property Name="OperationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LowNumber" Type="Int32" Nullable="false" />
+          <Property Name="HighNumber" Type="Int32" Nullable="false" />
+          <Property Name="Output" Type="String" Nullable="false" />
+          <Property Name="Result" Type="String" Nullable="false" />
+          <NavigationProperty Name="Types" Relationship="FlexOffersFizzBuzzModel.OperationType" FromRole="Operation" ToRole="Type" />
+          <Property Name="DateExecuted" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Operation" Relationship="FlexOffersFizzBuzzModel.OperationType" FromRole="Type" ToRole="Operation" />
+          <Property Name="OperationId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="OperationType">
+          <End Type="FlexOffersFizzBuzzModel.Operation" Role="Operation" Multiplicity="1" />
+          <End Type="FlexOffersFizzBuzzModel.Type" Role="Type" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operation">
+              <PropertyRef Name="OperationId" />
+            </Principal>
+            <Dependent Role="Type">
+              <PropertyRef Name="OperationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FlexOffersFizzBuzzModelStoreContainer" CdmEntityContainer="FlexOffersFizzBuzzModelContainer">
+    <EntitySetMapping Name="Operations">
+      <EntityTypeMapping TypeName="IsTypeOf(FlexOffersFizzBuzzModel.Operation)">
+        <MappingFragment StoreEntitySet="Operations">
+          <ScalarProperty Name="OperationId" ColumnName="OperationId" />
+          <ScalarProperty Name="LowNumber" ColumnName="LowNumber" />
+          <ScalarProperty Name="HighNumber" ColumnName="HighNumber" />
+          <ScalarProperty Name="Output" ColumnName="Output" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="DateExecuted" ColumnName="DateExecuted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Types">
+      <EntityTypeMapping TypeName="IsTypeOf(FlexOffersFizzBuzzModel.Type)">
+        <MappingFragment StoreEntitySet="Types">
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="OperationId" ColumnName="OperationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

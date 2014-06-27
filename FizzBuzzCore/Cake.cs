@@ -32,12 +32,18 @@
         public bool AmDivisibleBy(int divisor)
         {
             // Portions is the dividen in this operation
-            if (Portions % divisor == 0)
+            if (divisor != 0 && Portions % divisor == 0)
             {
                 return true;
             }
 
             return false;
+        }
+
+
+        public int DivibeMe(int divisor)
+        {
+            return this.Portions/divisor;
         }
     }
 }

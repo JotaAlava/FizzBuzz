@@ -1,22 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Web;
+using FlexOffersFizzBuzz.Models;
 
 namespace FlexOffersFizzBuzz.DAL.Repositories
 {
     public class GenericRepository<TEntity> where TEntity : class
     {
-        internal FlexOffersFizzBuzzContext context;
+        internal FlexOffersFizzBuzzModelContainer context;
         internal DbSet<TEntity> dbSet;
 
-        public GenericRepository(IFlexOffersFizzBuzzContext context)
-        {
-            this.context = context;
-        }
-
-        public GenericRepository(SchoolContext context)
+        public GenericRepository(FlexOffersFizzBuzzModelContainer context)
         {
             this.context = context;
             this.dbSet = context.Set<TEntity>();

@@ -127,3 +127,7 @@ C:\Users\joseal\Documents\GitHub\FlexOffersFizzBuzz\FlexOffersFizzBuzz\bin\Antlr
 C:\Users\joseal\Documents\GitHub\FlexOffersFizzBuzz\FlexOffersFizzBuzz\obj\Debug\FlexOffersFizzBuzz.csprojResolveAssemblyReference.cache
 C:\Users\joseal\Documents\GitHub\FlexOffersFizzBuzz\FlexOffersFizzBuzz\obj\Debug\FlexOffersFizzBuzz.dll
 C:\Users\joseal\Documents\GitHub\FlexOffersFizzBuzz\FlexOffersFizzBuzz\obj\Debug\FlexOffersFizzBuzz.pdb
+C:\Users\joseal\Documents\GitHub\FlexOffersFizzBuzz\FlexOffersFizzBuzz\bin\EntityFramework.dll
+C:\Users\joseal\Documents\GitHub\FlexOffersFizzBuzz\FlexOffersFizzBuzz\bin\EntityFramework.SqlServer.dll
+C:\Users\joseal\Documents\GitHub\FlexOffersFizzBuzz\FlexOffersFizzBuzz\bin\EntityFramework.xml
+C:\Users\joseal\Documents\GitHub\FlexOffersFizzBuzz\FlexOffersFizzBuzz\bin\EntityFramework.SqlServer.xml

@@ -2,48 +2,49 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using FlexOffersFizzBuzz.Models;
 
 namespace FlexOffersFizzBuzz.DAL.Repositories
 {
     public class UnitOfWork : IDisposable
     {
-        private UltiDashDbEntities1 context;
+        private FlexOffersFizzBuzzModelContainer context;
         private GenericRepository<Operation> teamRepository;
 
         /// <summary>
-        /// This is the only class that should "new" the UltiDashDbEntities1.
+        /// This is the only class that should "new" the FlexOffersFizzBuzzModelContainer.
         /// </summary>
         /// <param name="connectionString"> The connection string to the SQL Db </param>
-        public DataManager(string connectionString)
+        public UnitOfWork(string connectionString)
         {
-            this.context = new UltiDashDbEntities1(connectionString);
+            this.context = new FlexOffersFizzBuzzModelContainer(connectionString);
         }
 
         /// <summary>
-        /// This is the only class that should "new" the UltiDashDbEntities1.
+        /// This is the only class that should "new" the FlexOffersFizzBuzzModelContainer.
         /// If no connection string is passed then the production Db connection string will be used.
         /// </summary>
-        public DataManager()
+        public UnitOfWork()
         {
-            this.context = new UltiDashDbEntities1("UltiDashDbEntities1");
+            this.context = new FlexOffersFizzBuzzModelContainer("FlexOffersFizzBuzzModelContainer");
         }
 
         /// <summary>
         /// This constructor is used for testing purposes. The data manager receives a child of the main
         /// context class that has access to a quick erase Db method.
         /// </summary>
-        public DataManager(UltiDashDbEntities1 contextForTestingONLY)
+        public UnitOfWork(FlexOffersFizzBuzzModelContainer contextForTestingONLY)
         {
             this.context = contextForTestingONLY;
         }
 
-        public GenericRepository<Team> TeamRepository
+        public GenericRepository<Operation> TeamRepository
         {
             get
             {
                 if (this.teamRepository == null)
                 {
-                    this.teamRepository = new GenericRepository<Team>(context);
+                    this.teamRepository = new GenericRepository<Operation>(context);
                 }
                 return teamRepository;
             }
