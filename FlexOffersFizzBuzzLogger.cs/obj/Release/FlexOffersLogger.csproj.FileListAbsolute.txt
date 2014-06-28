@@ -1,0 +1,5 @@
+C:\Users\joseal\Documents\GitHub\FlexOffersFizzBuzz\FlexOffersFizzBuzzLogger.cs\bin\Release\FlexOffersFizzBuzzLogger.cs.dll
+C:\Users\joseal\Documents\GitHub\FlexOffersFizzBuzz\FlexOffersFizzBuzzLogger.cs\bin\Release\FlexOffersFizzBuzzLogger.cs.pdb
+C:\Users\joseal\Documents\GitHub\FlexOffersFizzBuzz\FlexOffersFizzBuzzLogger.cs\obj\Release\FlexOffersLogger.csprojResolveAssemblyReference.cache
+C:\Users\joseal\Documents\GitHub\FlexOffersFizzBuzz\FlexOffersFizzBuzzLogger.cs\obj\Release\FlexOffersFizzBuzzLogger.cs.dll
+C:\Users\joseal\Documents\GitHub\FlexOffersFizzBuzz\FlexOffersFizzBuzzLogger.cs\obj\Release\FlexOffersFizzBuzzLogger.cs.pdb

@@ -1,0 +1,48 @@
+﻿<div id="fizzBuzzLandingPage">
+    <div class="container">
+        <div class="row">
+            <form data-bind="submit: HitFizzBuzz">
+                <div class="col-md-12">
+                    <h3>Call FizzBuzz!</h3>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Type Of Object</label>
+                                <select id="typeDropdown" class="form-control" id="" name="Type">
+                                    <option value="Cake">Cake</option>
+                                    <option value="Stopwatch">Stopwatch</option>
+                                    <option value="Null">Null</option>
+                                    <option value="Int32">Int32</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Low Value</label>
+                                <input id="lowValueInput" class="form-control" type="number" />
+                            </div>
+                            <div class="form-group">
+                                <label>High Value</label>
+                                <input id="highValueInput" class="form-control" type="number" />
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Hit Me!</button>
+                </div>
+            </form>
+            <div class="col-md-12 item-list">
+                <h3>
+                    Operations Performed
+                </h3>
+                <!-- ko foreach: listOfOperations -->
+                <p data-bind="html: FormatedResult"></p>
+                <!-- /ko -->
+            </div>
+            <!-- ko if:  -->
+            <div class="col-md-8">
+                <h3>No Operatoins Have Benn Performed</h3>
+                <p>Select a type of object from the list, a low value, and high value. I shall divide the object if possible!</p>
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</div>

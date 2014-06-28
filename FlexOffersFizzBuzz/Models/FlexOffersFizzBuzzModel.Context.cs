@@ -23,18 +23,10 @@ namespace FlexOffersFizzBuzz.Models
         {
             
         }
-
-        /// <summary>
-        /// This constructor will use the production Db
-        /// </summary>
-        public FlexOffersFizzBuzzModelContainer()
-            : base("name=FlexOffersFizzBuzzModelContainer")
-        {
-        }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            throw new UnintentionalCodeFirstException();
+            //throw new UnintentionalCodeFirstException();
         }
     
         public virtual DbSet<Operation> Operations { get; set; }

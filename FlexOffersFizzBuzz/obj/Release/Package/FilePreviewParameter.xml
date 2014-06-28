@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="hirejota" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\joseal\\Documents\\GitHub\\FlexOffersFizzBuzz\\FlexOffersFizzBuzz\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\joseal\\Documents\\GitHub\\FlexOffersFizzBuzz\\FlexOffersFizzBuzz\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="FlexOffersFizzBuzzModelContainer-Web.config Connection String" description="" value="metadata=res://*/Models.FlexOffersFizzBuzzModel.csdl|res://*/Models.FlexOffersFizzBuzzModel.ssdl|res://*/Models.FlexOffersFizzBuzzModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=tcp:acgqm5x25a.database.windows.net,1433;Initial Catalog=FizzBuzzProdDb;User Id=jota@acgqm5x25a;Password=Phrygian85&quot;" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\joseal\\Documents\\GitHub\\FlexOffersFizzBuzz\\FlexOffersFizzBuzz\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='FlexOffersFizzBuzzModelContainer']/@connectionString" />
+  </parameter>
+  <parameter name="FlexOffersFizzBuzzTestDb-Web.config Connection String" description="" value="metadata=res://*/Models.FlexOffersFizzBuzzModel.csdl|res://*/Models.FlexOffersFizzBuzzModel.ssdl|res://*/Models.FlexOffersFizzBuzzModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=.;initial catalog=FizzBuzzTestDb;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\joseal\\Documents\\GitHub\\FlexOffersFizzBuzz\\FlexOffersFizzBuzz\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='FlexOffersFizzBuzzTestDb']/@connectionString" />
+  </parameter>
+</parameters>
