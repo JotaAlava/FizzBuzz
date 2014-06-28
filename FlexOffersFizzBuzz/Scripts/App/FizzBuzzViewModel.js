@@ -12,6 +12,23 @@
         var lowValue = $('#lowValueInput').val();
         var highValue = $('#highValueInput').val();
 
+        var parsedLowValue = parseInt(lowValue);
+        var parsedHighValue = parseInt(highValue);
+
+        if (parsedLowValue <= -2147483648) {
+            lowValue = "-2147483648";
+        }
+        else if (parsedLowValue >= 2147483647) {
+            lowValue = "2147483647";
+        }
+
+        if (parsedHighValue <= -2147483648) {
+            highValue = "-2147483648";
+        }
+        else if (parsedHighValue >= 2147483647) {
+            highValue = "2147483647";
+        }
+
         window.fizzBuzzHub.server.post(typeToUse, lowValue, highValue);
 
         //var typeToUse = $('#typeDropdown').val();

@@ -45,7 +45,7 @@ namespace FlexOffersFizzBuzz.DAL.Services
                 ServicesHelpers.TypeFactory(typeOfObjectToUse)
             };
 
-            var fizzBuzzResult = FizzBuzz.Run(listOfTypesSelected, int.Parse(lowValue), int.Parse(highValue));
+            var fizzBuzzResult = FizzBuzz.Run(listOfTypesSelected, Int32.Parse(lowValue), Int32.Parse(highValue));
             newRecordOfOperation = ProcessRequest(typeOfObjectToUse, lowValue, highValue, fizzBuzzResult[0]);
             result.ServiceCallResults.Add(new OperationDTO(newRecordOfOperation));
 

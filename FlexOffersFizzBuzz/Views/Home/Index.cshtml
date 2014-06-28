@@ -18,11 +18,11 @@
                             </div>
                             <div class="form-group">
                                 <label>Low Value</label>
-                                <input id="lowValueInput" class="form-control" />
+                                <input id="lowValueInput" class="form-control" type="number" />
                             </div>
                             <div class="form-group">
                                 <label>High Value</label>
-                                <input id="highValueInput" class="form-control" />
+                                <input id="highValueInput" class="form-control" type="number" />
                             </div>
                         </div>
                     </div>
@@ -35,13 +35,7 @@
                 </h3>
                 <!-- ko foreach: listOfOperations -->
                 <p data-bind="html: FormatedResult"></p>
-                    @*<td data-bind="text: output"></td>
-                    <td data-bind="html: result"></td>
-                    <td data-bind="text: highNumber"></td>
-                    <td data-bind="text: lowNumber"></td>
-                    <td data-bind="text: type"></td>*@
                 <!-- /ko -->
-                @*<button class="btn btn-default" data-bind="">Create Activity</button>*@
             </div>
             <!-- ko if:  -->
             <div class="col-md-8">
