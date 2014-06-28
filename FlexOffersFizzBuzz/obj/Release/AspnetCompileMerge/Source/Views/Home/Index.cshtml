@@ -8,7 +8,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Type Of Object</label>
+                                <label>Type Of Object In Collection</label>
                                 <select id="typeDropdown" class="form-control" id="" name="Type">
                                     <option value="Cake">Cake</option>
                                     <option value="Stopwatch">Stopwatch</option>
@@ -34,13 +34,15 @@
                     Operations Performed
                 </h3>
                 <!-- ko foreach: listOfOperations -->
-                <p data-bind="html: FormatedResult"></p>
+                <div data-bind="css: bootstrapClass">
+                    <p data-bind="html: FormatedResult"></p>
+                </div>
                 <!-- /ko -->
             </div>
             <!-- ko if:  -->
             <div class="col-md-8">
                 <h3>No Operatoins Have Benn Performed</h3>
-                <p>Select a type of object from the list, a low value, and high value. I shall divide the object if possible!</p>
+                <p>Select a type of object collection from the list, a low value, and high value. I shall divide the object if possible!</p>
             </div>
             <!-- /ko -->
         </div>

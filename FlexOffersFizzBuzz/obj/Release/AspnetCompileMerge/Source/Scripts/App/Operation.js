@@ -8,6 +8,7 @@
 
         self.output = ko.observable(data.Output);
         self.type = ko.observable(data.Types);
+        self.bootstrapClass = ko.observable();
 
         self.FormatedResult = ko.computed(function () {
             var result;
@@ -23,11 +24,14 @@
 
 
             if (self.output() == "InvalidType" || self.output() == "ObjectValueIsZero" || self.output() == "LowerNumberIsHigherThanHighNumber") {
+                self.bootstrapClass('class="well alert alert-danger');
                 result = "&#60;" + self.type() + "&#62; " + " - " + "N/A";
             }
             else if (highNumberRow != "") {
+                self.bootstrapClass('class="well alert alert-success');
                 result = "Output: " + self.output() + "\n\nDivided: " + lowerNumberDividend + " by: " + self.lowNumber() + " - " + self.lowNumber() + " is the lower number input!\n\n<br>" + "Output: " + self.output() + "\nDivided: " + highNumberDividend + " by: " + self.highNumber() + " - " + self.highNumber() + " is the higher number input!";
             } else {
+                self.bootstrapClass('class="well alert alert-success');
                 result = "Output: " + self.output() + "\n\nDivided: " + lowerNumberDividend + " by: " + self.lowNumber() + " - " + self.lowNumber() + " is the lower number input!<br><br>";
             }
             return result;
