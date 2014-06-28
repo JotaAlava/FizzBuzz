@@ -26,7 +26,8 @@ namespace FlexOffersFizzBuzz
             bundles.Add(new StyleBundle("~/bundles/App").Include(
                       "~/Scripts/App/FOFB.js",
                       "~/Scripts/App/DAL.js",
-                      "~/Scripts/App/ViewModels.js",
+                      "~/Scripts/App/Operation.js",
+                      "~/Scripts/App/FizzBuzzViewModel.js",
                       "~/Scripts/App/Models.js"
                       ));
         }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using FizzBuzzCore;
-using FlexOffersFizzBuzz.Models;
+using FlexOffersFizzBuzz.DTO;
 
 namespace FlexOffersFizzBuzz.DAL.Services
 {
@@ -10,7 +10,7 @@ namespace FlexOffersFizzBuzz.DAL.Services
         public FizzBuzzServiceResponse()
         {
             this.OperationResults = new List<FizzBuzzOperationResults>();
-            this.ServiceCallResults = new List<Operation>();
+            this.ServiceCallResults = new List<OperationDTO>();
         }
 
         public FizzBuzzServiceResponse(FizzBuzzOperationResults operationResults)
@@ -41,7 +41,7 @@ namespace FlexOffersFizzBuzz.DAL.Services
         /// <summary>
         /// This is what the GET method returns.
         /// </summary>
-        public List<Operation> ServiceCallResults { get; set; }
+        public List<OperationDTO> ServiceCallResults { get; set; }
         public FizzBuzzServiceResponseCode ServiceResponseCode { get; set; }
         public Exception Exception { get; set; }
     }

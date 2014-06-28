@@ -45,5 +45,11 @@
         {
             return this.Portions/divisor;
         }
+
+
+        public int WhatAmIWorth()
+        {
+            return Portions;
+        }
     }
 }

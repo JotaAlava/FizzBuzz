@@ -93,13 +93,13 @@ namespace FizzBuzzCore
             {
                 return new Dictionary<DividendQuotientPair, string>()
                         {
-                            {new DividendQuotientPair(lowNumber, objectToDivide.DivibeMe(lowNumber)), typeAsString},
+                            {new DividendQuotientPair(objectToDivide.WhatAmIWorth(), objectToDivide.DivibeMe(lowNumber)), typeAsString},
                         };
             }
             return new Dictionary<DividendQuotientPair, string>()
                         {
-                            {new DividendQuotientPair(lowNumber, objectToDivide.DivibeMe(lowNumber)), typeAsString},
-                            {new DividendQuotientPair(highNumber, objectToDivide.DivibeMe(highNumber)), typeAsString},
+                            {new DividendQuotientPair(objectToDivide.WhatAmIWorth(), objectToDivide.DivibeMe(lowNumber)), typeAsString},
+                            {new DividendQuotientPair(objectToDivide.WhatAmIWorth(), objectToDivide.DivibeMe(highNumber)), typeAsString},
                         };
         }
 
@@ -135,5 +135,6 @@ namespace FizzBuzzCore
     {
         bool AmDivisibleBy(int divisor);
         int DivibeMe(int divisor);
+        int WhatAmIWorth();
     }
 }

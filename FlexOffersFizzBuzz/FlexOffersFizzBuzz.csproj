@@ -166,6 +166,7 @@
     <Compile Include="DAL\Services\FizzBuzzServiceResponse.cs" />
     <Compile Include="DAL\Services\ServicesHelpers.cs" />
     <Compile Include="DAL\UnitOfWork.cs" />
+    <Compile Include="DTO\OperationDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -205,8 +206,10 @@
     <Content Include="Scripts\App\DAL.js" />
     <Content Include="Scripts\App\FOFB.js" />
     <Content Include="Scripts\App\Models.js" />
+    <Content Include="Scripts\App\Operation.js" />
     <Content Include="Scripts\App\Settings.js" />
-    <Content Include="Scripts\App\ViewModels.js" />
+    <Content Include="Scripts\App\FizzBuzzViewModel.js" />
+    <Content Include="Scripts\blockui.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -242,6 +245,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery.signalR-2.1.0.js" />
     <Content Include="Scripts\jquery.signalR-2.1.0.min.js" />
+    <Content Include="Scripts\knockout-3.1.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />

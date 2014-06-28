@@ -1,12 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Results;
 using FlexOffersFizzBuzz.DAL.Services;
+using FlexOffersFizzBuzz.Models;
 
 namespace FlexOffersFizzBuzz.Controllers
 {
     public class FizzBuzzController : ApiController
     {
-        private FizzBuzzService _operationService;
+        private FizzBuzzService _operationService = new FizzBuzzService();
 
         /// <summary>
         /// This method returns all the Operations in the system as DTOs
@@ -14,9 +19,9 @@ namespace FlexOffersFizzBuzz.Controllers
         /// Verb: GET 
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<string> Get()
+        public JsonResult<FizzBuzzServiceResponse> Get()
         {
-            return new string[] { "value1", "value2" };
+            return Json(_operationService.GetHistoryOfOperations());
         }
 
         /// <summary>
@@ -28,13 +33,26 @@ namespace FlexOffersFizzBuzz.Controllers
         /// <param name="lowValue"> Low value for FizzBuzz </param>
         /// <param name="highValue"> High value for FizzBuzz </param>
         /// <returns></returns>
-        public string Post(
+        public HttpResponseMessage Post(
                 [FromUri]string typeOfObjectToUse,
                 [FromUri]string lowValue,
                 [FromUri]string highValue
             )
         {
-            return "success";
+            var response = new HttpResponseMessage();
+
+            try
+            {
+                var resultOfServiceCall =_operationService.CreateRecordOfOperation(typeOfObjectToUse, lowValue, highValue);
+                response = Request.CreateResponse(HttpStatusCode.Created, resultOfServiceCall);
+            }
+            catch (Exception e)
+            {
+                response = Request.CreateResponse(HttpStatusCode.InternalServerError, e);
+                throw;
+            }
+
+            return response;
         }
     }
 }

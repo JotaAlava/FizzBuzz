@@ -13,7 +13,7 @@ namespace FizzBuzzCore
         /// </summary>
         public FizzBuzzOperationResults()
         {
-            
+
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace FizzBuzzCore
         /// This constructor is a test hook
         /// </summary>
         /// <param name="operationResult"> Count of operation results </param>
-        public FizzBuzzOperationResults(FizzBuzzOperationResultCodes operationResult, Dictionary<DividendQuotientPair, string> resultDicitonary )
+        public FizzBuzzOperationResults(FizzBuzzOperationResultCodes operationResult, Dictionary<DividendQuotientPair, string> resultDicitonary)
         {
             this.RunStatus = operationResult;
             this.ResultDictionary = resultDicitonary;
@@ -58,36 +58,39 @@ namespace FizzBuzzCore
         /// <returns> English representation of the operation result </returns>
         public override string ToString()
         {
+            //var result = new StringBuilder();
+            //if (RunStatus == FizzBuzzOperationResultCodes.Fizz || RunStatus == FizzBuzzOperationResultCodes.Buzz || RunStatus == FizzBuzzOperationResultCodes.FizzBuzz)
+            //{
+            //    result.Append(String.Format("Output: {0}.<br/><br/>-Results-<br/><br/>", RunStatus.ToString()));
+
+            //    // I use a for loop because I cannot access a dictionary by index, much easier to take advantage of this!
+            //    foreach (var operation in ResultDictionary)
+            //    {
+            //        var timesIterated = 0;
+
+            //        if (timesIterated == 0)
+            //        {
+            //            result.Append(String.Format("<br/>Divided:{0} by: {1}. - {1} is the lower number input.<br/><br/>", operation.Key, operation.Value));
+            //        }
+            //        else
+            //        {
+            //            result.Append(String.Format("<br/>Divided:{0} by: {1}. - {1} is the higher number input.", operation.Key, operation.Value));
+            //        }
+
+            //        timesIterated++;
+            //    }
+            //}
+            //else if (RunStatus == FizzBuzzOperationResultCodes.InvalidType || RunStatus == FizzBuzzOperationResultCodes.LowerNumberIsHigherThanHighNumber || RunStatus == FizzBuzzOperationResultCodes.ObjectValueIsZero)
+            //{
+            //    result.Append(String.Format("<{1}> - N/A\n\nError Details: {0}", RunStatus, ResultDictionary.First().Value));
+            //}
+
+            //return result.ToString();
             var result = new StringBuilder();
-            if (RunStatus == FizzBuzzOperationResultCodes.InvalidType ||
-                RunStatus == FizzBuzzOperationResultCodes.LowerNumberIsHigherThanHighNumber
-                || RunStatus == FizzBuzzOperationResultCodes.ObjectValueIsZero)
+            foreach (var operation in ResultDictionary)
             {
-                result.Append(String.Format("Output: {0}.\n\n\t\t\t-Results-\n\n", RunStatus.ToString()));
-
-                // I use a for loop because I cannot access a dictionary by index, much easier to take advantage of this!
-                foreach (var operation in ResultDictionary)
-                {
-                    var timesIterated = 0;
-
-                    if (timesIterated == 0)
-                    {
-                        result.Append(String.Format("\tDivided:{0} by: {1}. - {1} is the lower number input.\n\n", operation.Key, operation.Value));
-                    }
-                    else
-                    {
-                        result.Append(String.Format("\tDivided:{0} by: {1}. - {1} is the higher number input.\n\n", operation.Key, operation.Value));
-                    }
-
-                    timesIterated++;
-                }
+                result.Append(String.Format("${0}|{1}@{2}?", operation.Key.Dividend, operation.Key.Quotient, operation.Value));
             }
-            else
-            {
-                result.Append(String.Format("<{1}> - N/A\n\nError Details: {0}", RunStatus, ResultDictionary.First().Value));
-            }
-            
-
             return result.ToString();
         }
     }
@@ -105,6 +108,6 @@ namespace FizzBuzzCore
         // If the object is divisible by both numbers then output the word "FizzBuzzz"
         FizzBuzz,
         // To catch any sneaky mofos! - INVALID PARTITION ERROR 3
-        LowerNumberIsHigherThanHighNumber 
+        LowerNumberIsHigherThanHighNumber
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using FizzBuzzCore;
 using FlexOffersFizzBuzz.DAL.Repositories;
+using FlexOffersFizzBuzz.DTO;
 using FlexOffersFizzBuzz.Models;
 
 namespace FlexOffersFizzBuzz.DAL.Services
@@ -28,7 +29,7 @@ namespace FlexOffersFizzBuzz.DAL.Services
 
             foreach (var operation in operationsInDb)
             {
-                result.ServiceCallResults.Add(operation);
+                result.ServiceCallResults.Add(new OperationDTO(operation));
             }
 
             return result;
@@ -45,7 +46,8 @@ namespace FlexOffersFizzBuzz.DAL.Services
             };
 
             var fizzBuzzResult = FizzBuzz.Run(listOfTypesSelected, int.Parse(lowValue), int.Parse(highValue));
-            newRecordOfOperation = ProcessRequest(listOfTypesSelected, lowValue, highValue, fizzBuzzResult[0]);
+            newRecordOfOperation = ProcessRequest(typeOfObjectToUse, lowValue, highValue, fizzBuzzResult[0]);
+            result.ServiceCallResults.Add(new OperationDTO(newRecordOfOperation));
 
             uow.OperationRepository.Insert(newRecordOfOperation);
             uow.Commit();
@@ -53,12 +55,12 @@ namespace FlexOffersFizzBuzz.DAL.Services
             return result;
         }
 
-        private Operation ProcessRequest(List<object> typeOfObjectToUse, string lowValue,
+        private Operation ProcessRequest(string typeOfObjectToUse, string lowValue,
             string highValue, FizzBuzzOperationResults fizzBuzzResult)
         {
             var typeUsed = new List<Models.Type>()
             {
-                new Models.Type() {Name = fizzBuzzResult.ResultDictionary.First().Value}
+                new Models.Type() {Name = typeOfObjectToUse}
             };
 
             var result = new Operation()
