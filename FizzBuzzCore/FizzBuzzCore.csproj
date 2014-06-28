@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cake.cs" />
+    <Compile Include="DividendQuotientPair.cs" />
     <Compile Include="FizzBuzz.cs" />
     <Compile Include="FizzBuzzOperationResults.cs" />
     <Compile Include="FlexOffersFizzBuzzFoodBase.cs" />

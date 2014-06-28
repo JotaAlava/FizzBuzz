@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using FizzBuzzCore;
+using FlexOffersFizzBuzz.Tests.Controllers.TestHooks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
@@ -12,13 +13,15 @@ namespace FlexOffersFizzBuzz.Tests.FizzBuzzCore.Test
         public void Run_CollectionOf_ValidObjects()
         {
             // Arrange
+            var expectedResultDictionary = TestingFactory.GetDictionary(10, 90, 2, 10);
+
             var listOfExpectedResult = new List<FizzBuzzOperationResults>()
             {
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.Fizz),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.Fizz),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.Fizz),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.Fizz),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.Fizz)
+                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.Fizz, expectedResultDictionary),
+                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.Fizz, expectedResultDictionary),
+                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.Fizz, expectedResultDictionary),
+                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.Fizz, expectedResultDictionary),
+                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.Fizz, expectedResultDictionary)
             };
 
             var testValues = new List<object>()
@@ -31,13 +34,13 @@ namespace FlexOffersFizzBuzz.Tests.FizzBuzzCore.Test
             };
 
             // Act
-            var listOfActualresults = FizzBuzz.Run(testValues, 10, 9);
+            var listOfActualresults = FizzBuzz.Run(testValues, 10, 90);
 
             // Assert
             for (int i = 0; i < listOfExpectedResult.Count; i++)
             {
                 Assert.AreEqual(listOfExpectedResult[i].RunStatus, listOfActualresults[i].RunStatus);
-                Assert.AreEqual(listOfExpectedResult[i].ResultDictionary, listOfActualresults[i].ResultDictionary);
+                Assert.AreEqual(listOfExpectedResult[i].ResultDictionary.Count, listOfActualresults[i].ResultDictionary.Count);
             }
         }
 
@@ -45,13 +48,17 @@ namespace FlexOffersFizzBuzz.Tests.FizzBuzzCore.Test
         public void Run_CollectionOf_InValidObjects()
         {
             // Arrange
+            var expectedOperationResult = new FizzBuzzOperationResults();
+            expectedOperationResult.RunStatus = FizzBuzzOperationResultCodes.InvalidType;
+            expectedOperationResult.ResultDictionary = TestingFactory.GetDictionary(1);
+
             var listOfExpectedResult = new List<FizzBuzzOperationResults>()
             {
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType)
+                expectedOperationResult,
+                expectedOperationResult,
+                expectedOperationResult,
+                expectedOperationResult,
+                expectedOperationResult
             };
 
             var testValues = new List<object>()
@@ -64,13 +71,13 @@ namespace FlexOffersFizzBuzz.Tests.FizzBuzzCore.Test
             };
 
             // Act
-            var listOfActualresults = FizzBuzz.Run(testValues, 10, 9);
+            var listOfActualresults = FizzBuzz.Run(testValues, 10, 90);
 
             // Assert
             for (int i = 0; i < listOfExpectedResult.Count; i++)
             {
                 Assert.AreEqual(listOfExpectedResult[i].RunStatus, listOfActualresults[i].RunStatus);
-                Assert.AreEqual(listOfExpectedResult[i].ResultDictionary, listOfActualresults[i].ResultDictionary);
+                Assert.AreEqual(listOfExpectedResult[i].ResultDictionary.Count, listOfActualresults[i].ResultDictionary.Count);
             }
         }
 
@@ -97,18 +104,21 @@ namespace FlexOffersFizzBuzz.Tests.FizzBuzzCore.Test
         public void Run_CollectionOf_BothValidAndInvalidValues()
         {
             // Arrange
+            var expectedResultDictionary = TestingFactory.GetDictionary(2);
+            var expectedResultDictionaryForInvalids = TestingFactory.GetDictionary(1);
+
             var listOfExpectedResult = new List<FizzBuzzOperationResults>()
             {
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.Fizz),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.Fizz),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.Fizz),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.Fizz),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.Fizz),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType)
+                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.Buzz, expectedResultDictionary),
+                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType, expectedResultDictionaryForInvalids),
+                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.Buzz, expectedResultDictionary),
+                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType, expectedResultDictionaryForInvalids),
+                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.Buzz, expectedResultDictionary),
+                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType, expectedResultDictionaryForInvalids),
+                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.Buzz, expectedResultDictionary),
+                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType, expectedResultDictionaryForInvalids),
+                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.Buzz, expectedResultDictionary),
+                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType, expectedResultDictionaryForInvalids)
             };
 
             var testValues = new List<object>()
@@ -126,13 +136,13 @@ namespace FlexOffersFizzBuzz.Tests.FizzBuzzCore.Test
             };
 
             // Act
-            var listOfActualresults = FizzBuzz.Run(testValues, 10, 9);
+            var listOfActualresults = FizzBuzz.Run(testValues, 9, 10);
 
             // Assert
             for (int i = 0; i < listOfExpectedResult.Count; i++)
             {
                 Assert.AreEqual(listOfExpectedResult[i].RunStatus, listOfActualresults[i].RunStatus);
-                Assert.AreEqual(listOfExpectedResult[i].ResultDictionary, listOfActualresults[i].ResultDictionary);
+                Assert.AreEqual(listOfExpectedResult[i].ResultDictionary.Count, listOfActualresults[i].ResultDictionary.Count);
             }
         }
 
@@ -234,18 +244,23 @@ namespace FlexOffersFizzBuzz.Tests.FizzBuzzCore.Test
         public void Run_CollectionOf_BothValidAndInvalidValues_NumbersAre0()
         {
             // Arrange
+            var expectedDictionaryOfResults = TestingFactory.GetDictionary(1);
+            var expectedOperationResult = new FizzBuzzOperationResults();
+            expectedOperationResult.RunStatus = FizzBuzzOperationResultCodes.ObjectValueIsZero;
+            expectedOperationResult.ResultDictionary = new Dictionary<DividendQuotientPair, string>();
+
             var listOfExpectedResult = new List<FizzBuzzOperationResults>()
             {
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.ObjectValueIsZero),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.ObjectValueIsZero),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.ObjectValueIsZero),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.ObjectValueIsZero),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.ObjectValueIsZero),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType)
+                expectedOperationResult,
+                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType, expectedDictionaryOfResults),
+                expectedOperationResult,
+                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType, expectedDictionaryOfResults),
+                expectedOperationResult,
+                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType, expectedDictionaryOfResults),
+                expectedOperationResult,
+                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType, expectedDictionaryOfResults),
+                expectedOperationResult,
+                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType, expectedDictionaryOfResults),
             };
 
             var testValues = new List<object>()
@@ -269,7 +284,7 @@ namespace FlexOffersFizzBuzz.Tests.FizzBuzzCore.Test
             for (int i = 0; i < listOfExpectedResult.Count; i++)
             {
                 Assert.AreEqual(listOfExpectedResult[i].RunStatus, listOfActualresults[i].RunStatus);
-                Assert.AreEqual(listOfExpectedResult[i].ResultDictionary, listOfActualresults[i].ResultDictionary);
+                Assert.AreEqual(listOfExpectedResult[i].ResultDictionary.Count, listOfActualresults[i].ResultDictionary.Count);
             }
         }
 
@@ -277,18 +292,22 @@ namespace FlexOffersFizzBuzz.Tests.FizzBuzzCore.Test
         public void Run_CollectionOf_BothValidAndInvalidValues_NumbersAre0_ObjectDividendIs0()
         {
             // Arrange
+            var expectedOperationResult = new FizzBuzzOperationResults();
+            expectedOperationResult.RunStatus = FizzBuzzOperationResultCodes.ObjectValueIsZero;
+            expectedOperationResult.ResultDictionary = new Dictionary<DividendQuotientPair, string>();
+            var expectedDictionaryOfResults = TestingFactory.GetDictionary();
             var listOfExpectedResult = new List<FizzBuzzOperationResults>()
             {
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.ObjectValueIsZero),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.ObjectValueIsZero),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.ObjectValueIsZero),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.ObjectValueIsZero),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.ObjectValueIsZero),
-                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType)
+                expectedOperationResult,
+                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType, expectedDictionaryOfResults),
+                expectedOperationResult,
+                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType, expectedDictionaryOfResults),
+                expectedOperationResult,
+                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType, expectedDictionaryOfResults),
+                expectedOperationResult,
+                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType, expectedDictionaryOfResults),
+                expectedOperationResult,
+                new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.InvalidType, expectedDictionaryOfResults)
             };
 
             var testValues = new List<object>()
@@ -312,7 +331,7 @@ namespace FlexOffersFizzBuzz.Tests.FizzBuzzCore.Test
             for (int i = 0; i < listOfExpectedResult.Count; i++)
             {
                 Assert.AreEqual(listOfExpectedResult[i].RunStatus, listOfActualresults[i].RunStatus);
-                Assert.AreEqual(listOfExpectedResult[i].ResultDictionary, listOfActualresults[i].ResultDictionary);
+                Assert.AreEqual(listOfExpectedResult[i].ResultDictionary.Count, listOfActualresults[i].ResultDictionary.Count);
             }
         }
 
@@ -338,7 +357,7 @@ namespace FlexOffersFizzBuzz.Tests.FizzBuzzCore.Test
             var supportedDateType = new Cake("Chocolate", 10);
 
             // Act
-            var actualresult = FizzBuzz.ExecuteFizzBuzz(supportedDateType, 10, 9);
+            var actualresult = FizzBuzz.ExecuteFizzBuzz(supportedDateType, 10, 11);
 
             // Assert
             Assert.AreEqual(expectedResult.RunStatus, actualresult.RunStatus);
@@ -381,6 +400,23 @@ namespace FlexOffersFizzBuzz.Tests.FizzBuzzCore.Test
 
             // Act
             var actualresult = FizzBuzz.ExecuteFizzBuzz(supportedDateType, 5, 10);
+
+            // Assert
+            Assert.AreEqual(expectedResult.RunStatus, actualresult.RunStatus);
+        }
+
+        [TestMethod]
+        public void ExecuteFizzBuzz_LowerNumberIsHigherThanHighNumber()
+        {
+            // Arrange
+            var expectedResult = new FizzBuzzOperationResults(FizzBuzzOperationResultCodes.LowerNumberIsHigherThanHighNumber);
+            var supportedDateType = new Cake("Chocolate", 10);
+            var lowNumber = 100;
+
+            var highNumber = 20;
+
+            // Act
+            var actualresult = FizzBuzz.ExecuteFizzBuzz(supportedDateType, lowNumber, highNumber);
 
             // Assert
             Assert.AreEqual(expectedResult.RunStatus, actualresult.RunStatus);

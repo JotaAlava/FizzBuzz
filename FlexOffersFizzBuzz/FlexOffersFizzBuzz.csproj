@@ -164,6 +164,7 @@
     <Compile Include="DAL\Repositories\GenericRepository.cs" />
     <Compile Include="DAL\Services\FizzBuzzService.cs" />
     <Compile Include="DAL\Services\FizzBuzzServiceResponse.cs" />
+    <Compile Include="DAL\Services\ServicesHelpers.cs" />
     <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

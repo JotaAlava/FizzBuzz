@@ -7,6 +7,7 @@ namespace FlexOffersFizzBuzz.DAL.Repositories
     {
         private FlexOffersFizzBuzzModelContainer context;
         private GenericRepository<Operation> operationRepository;
+        private GenericRepository<Models.Type> typeRepository;
 
         /// <summary>
         /// This is the only class that should "new" the FlexOffersFizzBuzzModelContainer.
@@ -35,7 +36,7 @@ namespace FlexOffersFizzBuzz.DAL.Repositories
             this.context = contextForTestingONLY;
         }
 
-        public GenericRepository<Operation> TeamRepository
+        public GenericRepository<Operation> OperationRepository
         {
             get
             {
@@ -44,6 +45,18 @@ namespace FlexOffersFizzBuzz.DAL.Repositories
                     this.operationRepository = new GenericRepository<Operation>(context);
                 }
                 return operationRepository;
+            }
+        }
+
+        public GenericRepository<Models.Type> TypeRepository
+        {
+            get
+            {
+                if (this.typeRepository == null)
+                {
+                    this.typeRepository = new GenericRepository<Models.Type>(context);
+                }
+                return typeRepository;
             }
         }
 
@@ -75,6 +88,9 @@ namespace FlexOffersFizzBuzz.DAL.Repositories
 
     public interface IUnitOfWork
     {
-        
+        void Commit();
+        void Dispose();
+        GenericRepository<Operation> OperationRepository { get; }
+        GenericRepository<Models.Type> TypeRepository { get; }
     }
 }

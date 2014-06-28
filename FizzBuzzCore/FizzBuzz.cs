@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace FizzBuzzCore
@@ -20,42 +21,39 @@ namespace FizzBuzzCore
         public static FizzBuzzOperationResults ExecuteFizzBuzz(object objectToDivide, int lowNumber, int highNumber)
         {
             var result = new FizzBuzzOperationResults();
-            var isImplementingIAmDivisibleInterface = objectToDivide as IAmDivisible;
+            result.ResultDictionary = new Dictionary<DividendQuotientPair, string>();
 
-            if (isImplementingIAmDivisibleInterface != null)
+            if (lowNumber > highNumber)
             {
-                bool divisibleByMinValue = isImplementingIAmDivisibleInterface.AmDivisibleBy(lowNumber);
-                bool divisibleByMaxValue = isImplementingIAmDivisibleInterface.AmDivisibleBy(highNumber);
+                result.RunStatus = FizzBuzzOperationResultCodes.LowerNumberIsHigherThanHighNumber;
+                return result;
+            }
+
+            var isImplementingIAmDivisibleInterface = objectToDivide as IAmDivisible != null;
+            var areNumbersEqual = lowNumber == highNumber;
+            var objToDivide = objectToDivide as IAmDivisible;
+
+            if (isImplementingIAmDivisibleInterface)
+            {
+                bool divisibleByMinValue = objToDivide.AmDivisibleBy(lowNumber);
+                bool divisibleByMaxValue = objToDivide.AmDivisibleBy(highNumber);
 
                 if (divisibleByMinValue && divisibleByMaxValue)
                 {
                     result.RunStatus = FizzBuzzOperationResultCodes.FizzBuzz;
-                    if (lowNumber == highNumber)
-                    {
-                        result.ResultDictionary = new Dictionary<int, int>()
-                        {
-                            {lowNumber, isImplementingIAmDivisibleInterface.DivibeMe(lowNumber)},
-                        };
-                    }
-                    else
-                    {
-                        result.ResultDictionary = new Dictionary<int, int>()
-                        {
-                            {lowNumber, isImplementingIAmDivisibleInterface.DivibeMe(lowNumber)},
-                            {highNumber, isImplementingIAmDivisibleInterface.DivibeMe(highNumber)}
-                        };
-                    }
-
+                    result.ResultDictionary = PopulateDicitonary(areNumbersEqual, objToDivide, lowNumber, highNumber);
                     result.logger.LogValidAction(objectToDivide.GetType().ToString(), lowNumber, highNumber, result.RunStatus.ToString());
                 }
                 else if (divisibleByMaxValue)
                 {
                     result.RunStatus = FizzBuzzOperationResultCodes.Buzz;
+                    result.ResultDictionary = PopulateDicitonary(areNumbersEqual, objToDivide, lowNumber, highNumber);
                     result.logger.LogValidAction(objectToDivide.GetType().ToString(), lowNumber, highNumber, result.RunStatus.ToString());
                 }
                 else if (divisibleByMinValue)
                 {
                     result.RunStatus = FizzBuzzOperationResultCodes.Fizz;
+                    result.ResultDictionary = PopulateDicitonary(areNumbersEqual, objToDivide, lowNumber, highNumber);
                     result.logger.LogValidAction(objectToDivide.GetType().ToString(), lowNumber, highNumber, result.RunStatus.ToString());
                 }
             }
@@ -64,15 +62,72 @@ namespace FizzBuzzCore
                 result.RunStatus = FizzBuzzOperationResultCodes.InvalidType;
                 if (objectToDivide == null)
                 {
+                    result.ResultDictionary = PopulateDicitonary(areNumbersEqual, null, lowNumber, highNumber);
                     result.logger.LogInvalidAction("null", lowNumber, highNumber, result.RunStatus.ToString());
                 }
                 else
                 {
+                    result.ResultDictionary = PopulateDicitonary(areNumbersEqual, objectToDivide, lowNumber, highNumber);
                     result.logger.LogInvalidAction(objectToDivide.GetType().ToString(), lowNumber, highNumber, result.RunStatus.ToString());
                 }
             }
 
             return result;
+        }
+
+        private static Dictionary<DividendQuotientPair, string> PopulateDicitonary(bool areNumbersEqual, IAmDivisible objectToDivide, int lowNumber, int highNumber)
+        {
+            string typeAsString = String.Empty;
+            if (objectToDivide == null)
+            {
+                typeAsString = "null";
+                return new Dictionary<DividendQuotientPair, string>()
+                {
+                    {new DividendQuotientPair(), typeAsString},
+                };
+            }
+
+            typeAsString = objectToDivide.GetType().ToString();
+
+            if (areNumbersEqual)
+            {
+                return new Dictionary<DividendQuotientPair, string>()
+                        {
+                            {new DividendQuotientPair(lowNumber, objectToDivide.DivibeMe(lowNumber)), typeAsString},
+                        };
+            }
+            return new Dictionary<DividendQuotientPair, string>()
+                        {
+                            {new DividendQuotientPair(lowNumber, objectToDivide.DivibeMe(lowNumber)), typeAsString},
+                            {new DividendQuotientPair(highNumber, objectToDivide.DivibeMe(highNumber)), typeAsString},
+                        };
+        }
+
+        private static Dictionary<DividendQuotientPair, string> PopulateDicitonary(bool areNumbersEqual, object objectToDivide, int lowNumber, int highNumber)
+        {
+            string typeAsString = String.Empty;
+            if (objectToDivide == null)
+            {
+                typeAsString = "null";
+                return new Dictionary<DividendQuotientPair, string>()
+                {
+                    {new DividendQuotientPair(), typeAsString},
+                };
+            }
+
+            typeAsString = objectToDivide.GetType().ToString();
+
+            if (areNumbersEqual)
+            {
+                return new Dictionary<DividendQuotientPair, string>()
+                        {
+                            {new DividendQuotientPair(), typeAsString},
+                        };
+            }
+            return new Dictionary<DividendQuotientPair, string>()
+                        {
+                            {new DividendQuotientPair(), typeAsString},
+                        };
         }
     }
 

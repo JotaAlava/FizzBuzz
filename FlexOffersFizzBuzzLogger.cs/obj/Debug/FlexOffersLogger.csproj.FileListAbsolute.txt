@@ -1,5 +1,4 @@
 C:\Users\joseal\Documents\GitHub\FlexOffersFizzBuzz\FlexOffersFizzBuzzLogger.cs\bin\Debug\FlexOffersFizzBuzzLogger.cs.dll
 C:\Users\joseal\Documents\GitHub\FlexOffersFizzBuzz\FlexOffersFizzBuzzLogger.cs\bin\Debug\FlexOffersFizzBuzzLogger.cs.pdb
-C:\Users\joseal\Documents\GitHub\FlexOffersFizzBuzz\FlexOffersFizzBuzzLogger.cs\obj\Debug\FlexOffersLogger.csprojResolveAssemblyReference.cache
 C:\Users\joseal\Documents\GitHub\FlexOffersFizzBuzz\FlexOffersFizzBuzzLogger.cs\obj\Debug\FlexOffersFizzBuzzLogger.cs.dll
 C:\Users\joseal\Documents\GitHub\FlexOffersFizzBuzz\FlexOffersFizzBuzzLogger.cs\obj\Debug\FlexOffersFizzBuzzLogger.cs.pdb

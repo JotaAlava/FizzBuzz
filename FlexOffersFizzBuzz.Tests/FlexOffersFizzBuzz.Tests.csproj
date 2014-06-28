@@ -99,9 +99,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\IntegrationTests\FizzBuzzService.IntegrationTests.cs" />
+    <Compile Include="Controllers\TestHooks\DataTestHooks.cs" />
     <Compile Include="Controllers\TestHooks\EFTestHookContext.cs" />
     <Compile Include="Controllers\TestHooks\TestingFactory.cs" />
     <Compile Include="FizzBuzzCore.Test\FizzBuzzMainTests.cs" />
+    <Compile Include="FizzBuzzCore.Test\FizzBuzzOperationResultToStringTests.cs" />
     <Compile Include="FizzBuzzCore.Test\IsDivisibleTests.cs" />
     <Compile Include="FizzBuzzCore.Test\FizzBuzzOperator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

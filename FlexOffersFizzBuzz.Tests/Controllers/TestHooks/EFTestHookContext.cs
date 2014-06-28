@@ -13,8 +13,8 @@ namespace FlexOffersFizzBuzz.Tests.Controllers.TestHooks
 
         internal void DeleteAllEntriesInDb()
         {
-            this.DeleteAllOperationHistory();
             this.DeleteAllTypes();
+            this.DeleteAllOperationHistory();
         }
 
         internal void DeleteAllOperationHistory()
